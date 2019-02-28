@@ -1,5 +1,8 @@
 # Ignore node modules folder
-node_modules/
+node_modules
 
 # Ignore .DS_Store
 .DS_Store
+
+# Ignore environment variable
+.env
