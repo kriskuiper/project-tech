@@ -1,0 +1,20 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# Top-most EditorConfig file
+root = true
+
+# For all files / maps
+[*]
+# Set default charset to utf-8
+charset = utf-8
+
+# Unix style newlines
+end_of_line = lf
+
+# Add newline to every file end
+insert_final_newline = true
+
+# Indent style is space, size is two spaces
+indent_style = space
+indent_size = 2
+
