@@ -14,7 +14,7 @@ end_of_line = lf
 # Add newline to every file end
 insert_final_newline = true
 
-# Indent style is space, size is two spaces
+# Indent style is space, size is three spaces
 indent_style = space
-indent_size = 2
+indent_size = 3
 
