@@ -1,6 +1,6 @@
 # CycLove dating app
 ## Description
-A description of my dating app.
+CycLove is a web app where cyclists can date each other and keep up to date with activities of the people they follow.
 
 ## Installation
 
