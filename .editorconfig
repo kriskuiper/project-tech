@@ -16,5 +16,5 @@ insert_final_newline = true
 
 # Indent style is space, size is three spaces
 indent_style = space
-indent_size = 3
+indent_size = 4
 

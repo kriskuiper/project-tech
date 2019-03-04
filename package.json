@@ -19,5 +19,9 @@
   "homepage": "https://github.com/kriskuiper/project-tech#readme",
   "devDependencies": {
     "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
   }
 }
