@@ -12,7 +12,7 @@
     "url": "git+https://github.com/kriskuiper/project-tech.git"
   },
   "author": "Kris Kuiper",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kriskuiper/project-tech/issues"
   },
