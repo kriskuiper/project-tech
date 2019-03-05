@@ -1,0 +1,10 @@
+<% for (let index = 0; index < postsdata.length; index++) { %>
+    <article>
+        <header>
+            <h3><%= postsdata[index].title %></h3>
+            <p>Written by: <%= postsdata[index].author %></p>
+        </header>
+        <p><%= postsdata[index].contents %></p>
+        <p>Distance: <%= postsdata[index].kms %> km's</p>
+    </article>
+<% } %>

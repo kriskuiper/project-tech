@@ -39,50 +39,53 @@ app
     .listen(8000);
 
 function home(req, res) {
-    let doc = '<!doctype html>';
-    let length = postsdata.length;
-    let index = -1;
-    let routepost;
+    // let doc = '<!doctype html>';
+    // let length = postsdata.length;
+    // let index = -1;
+    // let routepost;
 
-    doc += '<link rel="stylesheet" href="static/index.css">';
-    doc += '<title>Home - CycLove</title>';
-    doc += '<h1>Hello World</h1>';
-    doc += '<p>Welcome to my dating app</p>';
+    // doc += '<link rel="stylesheet" href="static/index.css">';
+    // doc += '<title>Home - CycLove</title>';
+    // doc += '<h1>Hello World</h1>';
+    // doc += '<p>Welcome to my dating app</p>';
 
-    // As long as you have posts, do this (inside the wile loop) 
-    // with every post
-    while (++index < length) {
-        routepost = postsdata[index];
+    // // As long as you have posts, do this (inside the wile loop) 
+    // // with every post
+    // while (++index < length) {
+    //     routepost = postsdata[index];
 
-        // Title is post title
-        doc += `<h2>${routepost.title}</h2>`;
-        // Content is post content
-        doc += `<p>${routepost.contents}</p>`;
-    }
+    //     // Title is post title
+    //     doc += `<h2>${routepost.title}</h2>`;
+    //     // Content is post content
+    //     doc += `<p>${routepost.contents}</p>`;
+    // }
 
-    // Respond with whole document
-    res.send(doc);
+    // // Respond with whole document
+    // res.send(doc);
+    res.render('pages/feed.ejs', {postsdata: postsdata});
 }
 
 function about(req, res) {
-    let doc = '<!doctype html>';
+    // let doc = '<!doctype html>';
     
-    doc += '<link rel="stylesheet" href="static/index.css">';
-    doc += '<title>About us - CycLove</title>'
-    doc += '<h1>About us</h1>';
-    doc += '<p>CycLove is a dating app</p>';
+    // doc += '<link rel="stylesheet" href="static/index.css">';
+    // doc += '<title>About us - CycLove</title>'
+    // doc += '<h1>About us</h1>';
+    // doc += '<p>CycLove is a dating app</p>';
 
-    res.send(doc);
+    // res.send(doc);
+    res.render('pages/about.ejs');
 }
 
 // Send this 404 page when navigated to unknown page
 function notFound(req, res) {
-    let doc = '<!doctype html>';
+    // let doc = '<!doctype html>';
 
-    doc += '<link rel="stylesheet" href="static/index.css">';
-    doc += '<title>404 Not found - CycLove</title>';
-    doc += '<h1>Used some drug?</h1>';
-    doc += '<p>You have navigated to a page we could not find</p>';
+    // doc += '<link rel="stylesheet" href="static/index.css">';
+    // doc += '<title>404 Not found - CycLove</title>';
+    // doc += '<h1>Used some drug?</h1>';
+    // doc += '<p>You have navigated to a page we could not find</p>';
 
-    res.send(doc);
+    // res.send(doc);
+    res.render('pages/not-found.ejs');
 }
