@@ -2,7 +2,7 @@ const express = require('express');
 
 // Couple express to app variable
 const app = express();
-
+const port = 8000;
 // Set up some fake data
 const postsdata = [
     {
@@ -36,56 +36,19 @@ app
     .get('/', home)
     .get('/about', about)
     .use(notFound)
-    .listen(8000);
+    .listen(port, () => {
+        console.log(`Listening on port ${port}`);
+    });
 
 function home(req, res) {
-    // let doc = '<!doctype html>';
-    // let length = postsdata.length;
-    // let index = -1;
-    // let routepost;
-
-    // doc += '<link rel="stylesheet" href="static/index.css">';
-    // doc += '<title>Home - CycLove</title>';
-    // doc += '<h1>Hello World</h1>';
-    // doc += '<p>Welcome to my dating app</p>';
-
-    // // As long as you have posts, do this (inside the wile loop) 
-    // // with every post
-    // while (++index < length) {
-    //     routepost = postsdata[index];
-
-    //     // Title is post title
-    //     doc += `<h2>${routepost.title}</h2>`;
-    //     // Content is post content
-    //     doc += `<p>${routepost.contents}</p>`;
-    // }
-
-    // // Respond with whole document
-    // res.send(doc);
     res.render('pages/feed.ejs', {postsdata: postsdata});
 }
 
 function about(req, res) {
-    // let doc = '<!doctype html>';
-    
-    // doc += '<link rel="stylesheet" href="static/index.css">';
-    // doc += '<title>About us - CycLove</title>'
-    // doc += '<h1>About us</h1>';
-    // doc += '<p>CycLove is a dating app</p>';
-
-    // res.send(doc);
     res.render('pages/about.ejs');
 }
 
 // Send this 404 page when navigated to unknown page
 function notFound(req, res) {
-    // let doc = '<!doctype html>';
-
-    // doc += '<link rel="stylesheet" href="static/index.css">';
-    // doc += '<title>404 Not found - CycLove</title>';
-    // doc += '<h1>Used some drug?</h1>';
-    // doc += '<p>You have navigated to a page we could not find</p>';
-
-    // res.send(doc);
     res.render('pages/not-found.ejs');
 }
