@@ -1,8 +1,13 @@
+// Require dependencies from node_modules
 const express = require('express');
+const path = require('path');
 
 // Couple express to app variable
 const app = express();
+
+// Set default port
 const port = 8000;
+
 // Set up some fake data
 const postsdata = [
     {
@@ -37,18 +42,18 @@ app
     .get('/about', about)
     .use(notFound)
     .listen(port, () => {
-        console.log(`Listening on port ${port}`);
+        console.log(`Listening on port ${port}...`);
     });
 
 function home(req, res) {
-    res.render('pages/feed.ejs', {postsdata: postsdata});
+    res.render('partials/feed.ejs', {postsdata: postsdata});
 }
 
 function about(req, res) {
-    res.render('pages/about.ejs');
+    res.render('partials/about.ejs');
 }
 
 // Send this 404 page when navigated to unknown page
 function notFound(req, res) {
-    res.render('pages/not-found.ejs');
+    res.render('partials/not-found.ejs');
 }
