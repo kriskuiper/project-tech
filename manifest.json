@@ -1,0 +1,21 @@
+{
+    "short_name": "CycLove",
+    "name": "CycLove",
+    "icons": [
+        {
+            "src": "path/to/img.svg", // 192x192 px
+            "type": "image/type",
+            "sizes": "192x192"
+        },
+        {
+            "src": "path/to/img.svg", // 512x512 px
+            "type": "image/type",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#26343b",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#26343b"
+}
