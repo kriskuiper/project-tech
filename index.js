@@ -14,7 +14,7 @@ const port = 8000;
 // Set up some fake data
 const postsdata = [
     {
-        id: "6r6jaL301",
+        id: "a-ride-around-the-veluwe",
         title: "A ride around the Veluwe",
         author: "Kris Kuiper",
         contents: "Rode around the Veluwe yesterday, had a lot of fun",
@@ -24,7 +24,7 @@ const postsdata = [
 
     },
     {
-        id: "6029Kl1s",
+        id: "to-amerongen",
         title: "To Amerongen",
         author: "Niels Kuiper",
         contents: "Hopped on my bike this afternoon for a ride to Amerongen",
@@ -46,9 +46,9 @@ app
     .set("views", "view")
     .get("/", home)
     .get("/my-feed", feed)
-    .get("/:id", detail)
     .post("/my-feed", addPost)
     .get("/add-post", form)
+    .get("/:id", postdetail)
 
     // If you can't find any of the gets defined above, render 404.
     .use(notFound)
@@ -72,8 +72,18 @@ function form(req, res) {
     res.render("add-post.ejs");
 }
 
-function detail(req, res) {
-    res.render("detail.ejs");
+function postdetail(req, res) {
+    const id = req.params.id;
+    const post = find(postsdata, function(value) {
+        return value.id === id;
+    });
+    
+    if (!post) {
+        console.log("No post");
+        return;
+    }
+
+    res.render("detail-page.ejs", {post: postsdata});
 }
 
 function addPost(req, res) {
@@ -84,7 +94,7 @@ function addPost(req, res) {
         title: req.body.title,
         author: req.body.author,
         contents: req.body.contents,
-        kms: req.body.contents,
+        kms: req.body.kms,
         bike: req.body.bike,
         location: req.body.location
     });
