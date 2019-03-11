@@ -24,7 +24,10 @@
     "nodemon": "^1.18.10"
   },
   "dependencies": {
+    "array-find": "^1.0.0",
+    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "slug": "^1.0.0"
   }
 }

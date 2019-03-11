@@ -43,8 +43,50 @@ h3 {
     font-size: 1.2em;
 }
 
-.btn, form button {
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+a.btn, 
+form button {
+    transition: .2s ease-in;
+    display: block;
     font-size: .8em;
+    background: transparent;
+    padding: 1em;
     border: 1px solid #26343B;
     padding: 1em, 1.5em;
+}
+
+a.btn:hover, 
+form button:hover {
+    background-color: #26343B;
+    color: white;
+}
+
+label,
+input,
+textarea {
+    display: block;
+}
+
+input,
+textarea {
+    transition: .2s ease-in;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    outline: 0;
+    font-size: 1em;
+    padding: .5em 0;
+}
+
+label {
+    margin: 1em 0;
+}
+
+input:focus,
+textarea:focus {
+    border-bottom: 1px solid #26343B;
 }
