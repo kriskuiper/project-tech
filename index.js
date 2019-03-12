@@ -4,6 +4,10 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const find = require("array-find");
 const slug = require("slug");
+const dotenv = require("dotenv");
+
+// Configure dotenv
+dotenv.config();
 
 // Couple express to app variable
 const app = express();
