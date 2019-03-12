@@ -73,11 +73,17 @@ function form(req, res) {
     res.render("add-post.ejs");
 }
 
-function postdetail(req, res) {
+function postdetail(req, res, next) {
     let id = req.params.id;
     let post = find(postsdata, value => {
-        return value.id == id;
+        return value.id === id;
     });
+
+    if (!post) {
+        // Skip middleware from here
+        next();
+        return;
+    }
 
     res.render("detail-page.ejs", {post: post});
 }
