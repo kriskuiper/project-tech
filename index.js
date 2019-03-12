@@ -39,6 +39,7 @@ app
     // serve static files that are in the static directory
     .use("/static", express.static("static"))
     
+    // Use body parser to parse body of the request
     .use(bodyParser.urlencoded({extended: true}))
 
     // set ejs as templating engine
@@ -73,17 +74,12 @@ function form(req, res) {
 }
 
 function postdetail(req, res) {
-    const id = req.params.id;
-    const post = find(postsdata, function(value) {
-        return value.id === id;
+    let id = req.params.id;
+    let post = find(postsdata, value => {
+        return value.id == id;
     });
-    
-    if (!post) {
-        console.log("No post");
-        return;
-    }
 
-    res.render("detail-page.ejs", {post: postsdata});
+    res.render("detail-page.ejs", {post: post});
 }
 
 function addPost(req, res) {
