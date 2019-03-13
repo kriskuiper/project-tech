@@ -46,7 +46,6 @@ fetch(`www.api.strava.com/users/${access_token}`)
     .then(response => response.json)
     .then(json => console.log(json)); // zoiets
 
-
 // =======
 
 // All server thingies
