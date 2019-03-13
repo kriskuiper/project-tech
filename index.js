@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const find = require("array-find");
 const slug = require("slug");
 const dotenv = require("dotenv");
+const fetch = require("node-fetch"); // Have to install this
 
 // Configure dotenv
 dotenv.config();
@@ -37,6 +38,16 @@ const postsdata = [
         location: "Amsterdam"
     },
 ];
+
+// ======= Test dingen
+const access_token = process.env.STRAVA_ACCESS_TOKEN;
+
+fetch(`www.api.strava.com/users/${access_token}`)
+    .then(response => response.json)
+    .then(json => console.log(json)); // zoiets
+
+
+// =======
 
 // All server thingies
 app
