@@ -2,11 +2,20 @@
     <title>My feed - CycLove</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/"><img src="/static/media/images/cyclove-logo.svg" alt="Logo CycLove"></a></li>
+                <li><a href="/">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
     <section>
         <h1>See what others are doing</h1>
         <p>Expand your cycling friends</p>
     </section>
     <section>
+        <a href="/add-post">Add a post</a>
         <h2>Your feed:</h2>
         <% include partials/posts.ejs %>
     </section>

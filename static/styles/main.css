@@ -92,7 +92,9 @@ textarea:focus {
 }
 
 /* Header styling */
-
+header img {
+    width: 3rem;
+}
 
 /* Footer styling */
 

@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const find = require("array-find");
 const slug = require("slug");
 const dotenv = require("dotenv");
-const fetch = require("node-fetch"); // Have to install this
+const fetch = require("node-fetch");
 
 // Configure dotenv
 dotenv.config();
@@ -42,9 +42,9 @@ const postsdata = [
 // ======= Test dingen
 const access_token = process.env.STRAVA_ACCESS_TOKEN;
 
-fetch(`www.api.strava.com/users/${access_token}`)
-    .then(response => response.json)
-    .then(json => console.log(json)); // zoiets
+// fetch(`www.api.strava.com/users/${access_token}`)
+//     .then(response => response.json)
+//     .then(json => console.log(json)); // zoiets
 
 // =======
 
@@ -61,11 +61,12 @@ app
     .set("views", "view")
     .get("/", home)
     .get("/my-feed", feed)
+    // .get("my-feed/:page", paginate) TODO: make pagination work
     .post("/my-feed", addPost)
     .get("/add-post", form)
     .get("/:id", postdetail)
 
-    // If you can't find any of the gets defined above, render 404.
+    // If you can't find any of the gets defined above, serve 404 page.
     .use(notFound)
 
     // Listen at port
@@ -75,7 +76,6 @@ app
 
 // Routes
 function home(req, res) {
-    // Have to render the static/index.html here... how?
     res.sendFile(path.join(__dirname, "static/index.html"));
 }
 
@@ -94,7 +94,6 @@ function postdetail(req, res, next) {
     });
 
     if (!post) {
-        // Skip middleware from here
         next();
         return;
     }
@@ -115,11 +114,11 @@ function addPost(req, res) {
         location: req.body.location
     });
 
-    res.redirect(`/${id}`);
+    // When the form is posted, redirect to the users' feed
+    res.redirect("/my-feed");
 }
 
 // Send this 404 page when navigated to unknown page
 function notFound(req, res) {
-    // Have to render the static/404.html here... how?
     res.status(404).sendFile(path.join(__dirname, "static/404.html"));
 }

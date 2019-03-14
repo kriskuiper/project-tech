@@ -1,21 +1,21 @@
 {
     "short_name": "CycLove",
-    "name": "CycLove",
+    "name": "CycLove, dating app for cyclists",
     "icons": [
         {
-            "src": "path/to/img.svg", // 192x192 px
-            "type": "image/type",
+            "src": "/static/media/images/pwa-images/logo-192.png",
+            "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "path/to/img.svg", // 512x512 px
-            "type": "image/type",
+            "src": "/static/media/images/pwa-images/logo-512.png",
+            "type": "image/png",
             "sizes": "512x512"
         }
     ],
     "start_url": "/",
-    "background_color": "#26343b",
+    "background_color": "#ffec3d",
     "display": "standalone",
     "scope": "/",
-    "theme_color": "#26343b"
+    "theme_color": "#ffec3d"
 }
