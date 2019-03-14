@@ -21,7 +21,8 @@ const postsdata = [
         contents: "Rode around the Veluwe yesterday, had a lot of fun",
         kms: 46,
         bike: "Giant TC1",
-        location: "Ermelo"
+        location: "Ermelo",
+        pictures: [],
 
     },
     {
@@ -31,7 +32,8 @@ const postsdata = [
         contents: "Hopped on my bike this afternoon for a ride to Amerongen",
         kms: 25,
         bike: "Cervélo 45J",
-        location: "Amsterdam"
+        location: "Amsterdam",
+        pictures: [],
     },
 ];
 
