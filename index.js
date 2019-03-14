@@ -4,11 +4,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const find = require("array-find");
 const slug = require("slug");
-const dotenv = require("dotenv");
 const fetch = require("node-fetch");
-
-// Configure dotenv
-dotenv.config();
 
 // Couple express to app variable
 const app = express();
@@ -39,15 +35,6 @@ const postsdata = [
     },
 ];
 
-// ======= Test dingen
-const access_token = process.env.STRAVA_ACCESS_TOKEN;
-
-// fetch(`www.api.strava.com/users/${access_token}`)
-//     .then(response => response.json)
-//     .then(json => console.log(json)); // zoiets
-
-// =======
-
 // All server thingies
 app
     // serve static files that are in the static directory
@@ -61,7 +48,6 @@ app
     .set("views", "view")
     .get("/", home)
     .get("/my-feed", feed)
-    // .get("my-feed/:page", paginate) TODO: make pagination work
     .post("/my-feed", addPost)
     .get("/add-post", form)
     .get("/:id", postdetail)
