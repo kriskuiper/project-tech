@@ -6,6 +6,16 @@ const find = require("array-find");
 const slug = require("slug");
 const fetch = require("node-fetch");
 
+/* 
+TODO: install and work with multer to make adding images to posts possible
+1. Install and require multer
+2. Look for examples using multer
+3. Add input[type=file] to add-post.ejs
+4. Update addPost function
+5. Enjoy a beer
+*/
+
+
 // Couple express to app variable
 const app = express();
 
