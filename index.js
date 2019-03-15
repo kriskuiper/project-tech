@@ -2,13 +2,14 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+const multer = require("multer"); // HAVE TO INSTALL AS DEPENDENCY
 const find = require("array-find");
 const slug = require("slug");
 const fetch = require("node-fetch");
 
 /* 
 TODO: install and work with multer to make adding images to posts possible
-1. Install and require multer
+1. Install and require multer  REQUIRE = DONE
 2. Look for examples using multer
 3. Add input[type=file] to add-post.ejs
 4. Update addPost function
@@ -58,34 +59,41 @@ app
     // set ejs as templating engine
     .set("view engine", "ejs")
     .set("views", "view")
-    .get("/", home)
-    .get("/my-feed", feed)
+    .get("/", serveHome)
+    .get("/my-feed", renderFeed)
     .post("/my-feed", addPost)
-    .get("/add-post", form)
-    .get("/:id", postdetail)
+    .get("/add-post", renderForm)
+    .get("/:id", renderPostdetail)
+    .get("/my-feed/?page=:page", paginateFeed)
 
     // If you can't find any of the gets defined above, serve 404 page.
-    .use(notFound)
+    .use(serveNotFound)
 
     // Listen at port
-    .listen(port, () => {
-        console.log(`Listening on port ${port}...`);
-    });
+    .listen(port, listening);
 
 // Routes
-function home(req, res) {
+function serveHome(req, res) {
     res.sendFile(path.join(__dirname, "static/index.html"));
 }
 
-function feed(req, res) {
+function renderFeed(req, res) {
     res.render("feed.ejs", {postsdata: postsdata});
 }
 
-function form(req, res) {
+function paginateFeed(req, res) {
+    let page = 1;
+
+    // Do something to use pagination
+
+    res.render("feed-page.ejs", {page: page});
+}
+
+function renderForm(req, res) {
     res.render("add-post.ejs");
 }
 
-function postdetail(req, res, next) {
+function renderPostdetail(req, res, next) {
     let id = req.params.id;
     let post = find(postsdata, value => {
         return value.id === id;
@@ -117,6 +125,11 @@ function addPost(req, res) {
 }
 
 // Send this 404 page when navigated to unknown page
-function notFound(req, res) {
+function serveNotFound(req, res) {
     res.status(404).sendFile(path.join(__dirname, "static/404.html"));
+}
+
+// Let me know which port the server is listening
+function listening() {
+    console.log(`The app is shown at port: ${port}`);
 }
