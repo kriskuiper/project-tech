@@ -89,6 +89,10 @@ a {
     font-weight: var(--font-weight-body);
 }
 
+p.subtitle {
+    font-size: var(--font-size-h2);
+}
+
 /* Buttons */
 a.btn, 
 form button {
@@ -180,7 +184,7 @@ body#homepage > main {
 
         body#homepage section:first-of-type > * {
             max-width: 15em;
-            margin: 15px auto;
+            margin: 1rem auto;
             text-align: center;
         }
 
