@@ -1,4 +1,5 @@
 const slug = require("slug");
+const postsdata = require("../models/fakedata");
 
 function addPost(req, res) {
     const id = slug(req.body.title).toLowerCase();

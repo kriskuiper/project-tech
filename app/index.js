@@ -15,11 +15,11 @@ const port = 8000;
 
 
 app
-    .use("/static", express.static("static"))
+    .use("/static", express.static("app/static"))
     .use(bodyParser.urlencoded({extended: true}))
 
     .set("view engine", "ejs")
-    .set("views", "view")
+    .set("views", "app/view")
 
     .get("/", serveHome)
     .get("/my-feed", renderFeed)
