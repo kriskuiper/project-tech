@@ -110,7 +110,7 @@ function addOne(data) {
 }
 
 // Good:
-// addOne, params: arr (array of numbers)
+// addOne arg: arr (array of numbers)
 function addOne(arr) {
     return data.map(item => item + 1);
 }
