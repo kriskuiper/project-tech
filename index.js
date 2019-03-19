@@ -1,21 +1,16 @@
 // Require dependencies from node_modules
 const express = require("express");
 const bodyParser = require("body-parser");
-const { serveHome, renderFeed, renderForm, renderPostDetail, addPost, serveNotFound } = require("./routes");
-/* 
-TODO: install and work with multer to make adding images to posts possible
 
-2. Look for examples using multer
-3. Add input[type=file] to add-post.ejs
-4. Update addPost function
-5. Enjoy a beer
-*/
+// Require controllers
+const serveHome = require("./controllers/serveHome");
+const serveNotFound = require("./controllers/serveNotFound");
+const renderFeed = require("./controllers/renderFeed");
+const renderForm = require("./controllers/renderForm");
+const addPost = require("./controllers/addPost");
+const renderPostDetail = require("./controllers/renderPostDetail");
 
-
-// Couple express to app variable
 const app = express();
-
-// Set default port
 const port = 8000;
 
 app
@@ -33,13 +28,7 @@ app
     .post("/my-feed", addPost)
     .get("/add-post", renderForm)
     .get("/my-feed/:url", renderPostDetail)
-    // .use(paginate.middleware(10, 50))
-    // .get("/my-feed/?page&limit", paginateFeed)
-
-    // If you can't find any of the gets defined above, serve 404 page.
     .use(serveNotFound)
-
-    // Listen at port
     .listen(port, listening);
 
 // Let me know which port the server is listening
