@@ -1,7 +1,7 @@
 {
   "name": "project-tech",
   "version": "1.0.0",
-  "description": "A package for setting up Project Tech",
+  "description": "A package for my Project Tech product",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
