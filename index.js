@@ -2,14 +2,15 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const multer = require("multer"); // HAVE TO INSTALL AS DEPENDENCY
+const multer = require("multer");
 const find = require("array-find");
 const slug = require("slug");
 const fetch = require("node-fetch");
+const paginate = require("express-paginate");
 
 /* 
 TODO: install and work with multer to make adding images to posts possible
-1. Install and require multer  REQUIRE = DONE
+
 2. Look for examples using multer
 3. Add input[type=file] to add-post.ejs
 4. Update addPost function
@@ -26,7 +27,7 @@ const port = 8000;
 // Set up some fake data
 const postsdata = [
     {
-        id: "a-ride-around-the-veluwe",
+        url: "a-ride-around-the-veluwe",
         title: "A ride around the Veluwe",
         author: "Kris Kuiper",
         contents: "Rode around the Veluwe yesterday, had a lot of fun",
@@ -37,7 +38,7 @@ const postsdata = [
 
     },
     {
-        id: "to-amerongen",
+        url: "to-amerongen",
         title: "To Amerongen",
         author: "Niels Kuiper",
         contents: "Hopped on my bike this afternoon for a ride to Amerongen",
@@ -62,9 +63,10 @@ app
     .get("/", serveHome)
     .get("/my-feed", renderFeed)
     .post("/my-feed", addPost)
-    .get("/my-feed/?page", paginateFeed)
     .get("/add-post", renderForm)
-    .get("/my-feed/:id", renderPostDetail)
+    .get("/my-feed/:url", renderPostDetail)
+    // .use(paginate.middleware(10, 50))
+    // .get("/my-feed/?page&limit", paginateFeed)
 
     // If you can't find any of the gets defined above, serve 404 page.
     .use(serveNotFound)
@@ -81,12 +83,17 @@ function renderFeed(req, res) {
     res.render("feed.ejs", {postsdata: postsdata});
 }
 
-function paginateFeed(req, res) {
-    let page = 1;
+function paginateFeed(req, res, next) {
+    // const currentPage = req.query.page;
+    // const itemCount = postsdata.length;
+    // const pageCount = postsdata.length / req.query.limit;
 
-    // Do something to use pagination
-
-    res.render("feed-page.ejs", {page: page});
+    // res.render("feed-paginated.ejs", {
+    //     posts: postsdata,
+    //     pageCount,
+    //     itemCount,
+    //     pages: paginate.getArrayPages(req)(pageCount, currentPage)
+    // });
 }
 
 function renderForm(req, res) {
@@ -94,17 +101,18 @@ function renderForm(req, res) {
 }
 
 function renderPostDetail(req, res, next) {
-    let id = req.params.id;
+    let url = req.params.url;
     let post = find(postsdata, getClickedPost);
 
     if (!post) {
         next();
+        return;
     }
 
     res.render("detail-page.ejs", {post: post});
 
     function getClickedPost(post) {
-        return post.id === id;
+        return post.url === url;
     }
 }
 

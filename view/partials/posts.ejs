@@ -1,5 +1,5 @@
 <% for (let index = 0; index < postsdata.length; index++) { %>
-    <a href="/my-feed/<%= postsdata[index].id %>">
+    <a href="/my-feed/<%= postsdata[index].url %>">
         <article class="feed__post">
             <header>
                 <p class="post__author"><%= postsdata[index].author %></p>

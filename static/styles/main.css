@@ -212,7 +212,7 @@ body > footer {
     justify-content: space-between;
     background: var(--text-color);
     color: var(--bg-color);
-    margin-top: 8em;
+    margin-top: 5rem;
 }
 
     body > footer > ul {
