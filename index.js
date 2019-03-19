@@ -1,13 +1,7 @@
 // Require dependencies from node_modules
 const express = require("express");
-const path = require("path");
 const bodyParser = require("body-parser");
-const multer = require("multer");
-const find = require("array-find");
-const slug = require("slug");
-const fetch = require("node-fetch");
-const paginate = require("express-paginate");
-
+const { serveHome, renderFeed, renderForm, renderPostDetail, addPost, serveNotFound } = require("./routes");
 /* 
 TODO: install and work with multer to make adding images to posts possible
 
@@ -24,32 +18,6 @@ const app = express();
 // Set default port
 const port = 8000;
 
-// Set up some fake data
-const postsdata = [
-    {
-        url: "a-ride-around-the-veluwe",
-        title: "A ride around the Veluwe",
-        author: "Kris Kuiper",
-        contents: "Rode around the Veluwe yesterday, had a lot of fun",
-        kms: 46,
-        bike: "Giant TC1",
-        location: "Ermelo",
-        pictures: [],
-
-    },
-    {
-        url: "to-amerongen",
-        title: "To Amerongen",
-        author: "Niels Kuiper",
-        contents: "Hopped on my bike this afternoon for a ride to Amerongen",
-        kms: 25,
-        bike: "Cervélo 45J",
-        location: "Amsterdam",
-        pictures: [],
-    },
-];
-
-// All server thingies
 app
     // serve static files that are in the static directory
     .use("/static", express.static("static"))
@@ -73,70 +41,6 @@ app
 
     // Listen at port
     .listen(port, listening);
-
-// Routes
-function serveHome(req, res) {
-    res.sendFile(path.join(__dirname, "static/index.html"));
-}
-
-function renderFeed(req, res) {
-    res.render("feed.ejs", {postsdata: postsdata});
-}
-
-function paginateFeed(req, res, next) {
-    // const currentPage = req.query.page;
-    // const itemCount = postsdata.length;
-    // const pageCount = postsdata.length / req.query.limit;
-
-    // res.render("feed-paginated.ejs", {
-    //     posts: postsdata,
-    //     pageCount,
-    //     itemCount,
-    //     pages: paginate.getArrayPages(req)(pageCount, currentPage)
-    // });
-}
-
-function renderForm(req, res) {
-    res.render("add-post.ejs");
-}
-
-function renderPostDetail(req, res, next) {
-    let url = req.params.url;
-    let post = find(postsdata, getClickedPost);
-
-    if (!post) {
-        next();
-        return;
-    }
-
-    res.render("detail-page.ejs", {post: post});
-
-    function getClickedPost(post) {
-        return post.url === url;
-    }
-}
-
-function addPost(req, res) {
-    const id = slug(req.body.title).toLowerCase();
-
-    postsdata.push({
-        id: id,
-        title: req.body.title,
-        author: req.body.author,
-        contents: req.body.contents,
-        kms: req.body.kms,
-        bike: req.body.bike,
-        location: req.body.location
-    });
-
-    // When the form is posted, redirect to the users' feed
-    res.redirect("/my-feed");
-}
-
-// Send this 404 page when navigated to unknown page
-function serveNotFound(req, res) {
-    res.status(404).sendFile(path.join(__dirname, "static/404.html"));
-}
 
 // Let me know which port the server is listening
 function listening() {
