@@ -1,13 +1,15 @@
 <% for (let index = 0; index < postsdata.length; index++) { %>
-    <article class="feed__post">
-        <header>
-            <p class="post__author"><%= postsdata[index].author %></p>
-        </header>
-        <h3 class="post__title"><%= postsdata[index].title %></h3>
-        <footer>
-            <p class="post__meta"><%= postsdata[index].location %></p> 
-            <p class="post__meta">Dist: <%= postsdata[index].kms %> km's %></p>
-            <p class="post__meta">Bike: <%= postsdata[index].bike %></p>
-        </footer>
-    </article>
+    <a href="/my-feed/<%= postsdata[index].id %>">
+        <article class="feed__post">
+            <header>
+                <p class="post__author"><%= postsdata[index].author %></p>
+            </header>
+            <h3 class="post__title"><%= postsdata[index].title %></h3>
+            <footer>
+                <p class="post__meta"><%= postsdata[index].location %></p> 
+                <p class="post__meta">Dist: <%= postsdata[index].kms %> km's %></p>
+                <p class="post__meta">Bike: <%= postsdata[index].bike %></p>
+            </footer>
+        </article>
+    </a>
 <% } %>

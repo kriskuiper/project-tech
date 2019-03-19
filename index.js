@@ -62,9 +62,9 @@ app
     .get("/", serveHome)
     .get("/my-feed", renderFeed)
     .post("/my-feed", addPost)
+    .get("/my-feed/?page", paginateFeed)
     .get("/add-post", renderForm)
-    .get("/:id", renderPostdetail)
-    .get("/my-feed/?page=:page", paginateFeed)
+    .get("/my-feed/:id", renderPostDetail)
 
     // If you can't find any of the gets defined above, serve 404 page.
     .use(serveNotFound)
@@ -93,18 +93,19 @@ function renderForm(req, res) {
     res.render("add-post.ejs");
 }
 
-function renderPostdetail(req, res, next) {
+function renderPostDetail(req, res, next) {
     let id = req.params.id;
-    let post = find(postsdata, value => {
-        return value.id === id;
-    });
+    let post = find(postsdata, getClickedPost);
 
     if (!post) {
         next();
-        return;
     }
 
     res.render("detail-page.ejs", {post: post});
+
+    function getClickedPost(post) {
+        return post.id === id;
+    }
 }
 
 function addPost(req, res) {
