@@ -1,5 +1,5 @@
 const find = require("array-find");
-const postsdata = require("./fakedata");
+const postsdata = require("../models/fakedata");
 
 function renderPostDetail(req, res, next) {
     let url = req.params.url;
