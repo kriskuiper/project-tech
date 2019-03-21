@@ -9,7 +9,6 @@ const postsdata = [
         bike: "Giant TC1",
         location: "Ermelo",
         pictures: [],
-
     },
     {
         url: "to-amerongen",
