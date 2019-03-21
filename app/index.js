@@ -12,8 +12,6 @@ const uri = `mongodb://${dbhost}/${dbname}`;
 mongoose.set("useNewUrlParser", true);
 mongoose.connect(uri);
 
-const connection = mongoose.connection;
-
 // Require controllers
 const serveHome = require("./controllers/serveHome");
 const serveNotFound = require("./controllers/serveNotFound");
