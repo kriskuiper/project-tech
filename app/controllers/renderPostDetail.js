@@ -10,11 +10,11 @@ function renderPostDetail(req, res, next) {
         return;
     }
 
-    res.render("detail-page.ejs", {post: post});
-
     function getClickedPost(post) {
         return post.url === url;
     }
+
+    res.render("detail-page.ejs", {post: post});
 }
 
 module.exports = renderPostDetail;

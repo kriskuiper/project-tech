@@ -1,24 +1,23 @@
 const fetch = require("node-fetch");
 
-let users;
+function requestUsers() {
+    return new Promise(resolveUsers);
+}
 
-request("https://jsonplaceholder.typicode.com/users")
-    .then(setUsers)
-    .catch(logError);
+function resolveUsers(resolve) {
+    getUsers("https://randomuser.me/api/?results=10")
+            .then(response => resolve(response.results))
+            .catch(logError);
+}
 
-async function request(url) {
+async function getUsers(url) {
     const response = await fetch(url);
     const body = await response.json();
     return body;
-}
-
-function setUsers(response) {
-    users = response;
-    return users;
 }
 
 function logError(error) {
     console.error(error);
 }
 
-module.exports = request;
+module.exports = requestUsers;

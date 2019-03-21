@@ -2,7 +2,14 @@
     <a href="/my-feed/<%= postsdata[index].url %>">
         <article class="feed__post">
             <header>
-                <p class="post__author"><%= postsdata[index].author %></p>
+                <p class="post__author">
+                    <% if (!postsdata[index].author) { %>
+                        <span><%= users[index].name.first %></span>
+                        <span><%= users[index].name.last %></span>
+                    <% } else { %>
+                        <%= postsdata[index].author %>
+                    <% } %>
+                </p>
             </header>
             <h3 class="post__title"><%= postsdata[index].title %></h3>
             <footer>

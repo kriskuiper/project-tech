@@ -1,11 +1,11 @@
 const slug = require("slug");
 const postsdata = require("../models/fakedata");
 
-function addPost(req, res) {
-    const id = slug(req.body.title).toLowerCase();
 
-    postsdata.push({
-        id: id,
+function addPost(req, res) {
+    const url = slug(req.body.title).toLowerCase();
+    postsdata.splice(0, 0, {
+        url: url,
         title: req.body.title,
         author: req.body.author,
         contents: req.body.contents,

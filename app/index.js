@@ -7,9 +7,12 @@ require("dotenv").config();
 // Process environment vars and connect to database
 const dbname = process.env.DB_NAME;
 const dbhost = process.env.DB_HOST;
-const urlToConnect = `mongodb://${dbhost}/${dbname}`;
+const uri = `mongodb://${dbhost}/${dbname}`;
 
-mongoose.connect(urlToConnect);
+mongoose.set("useNewUrlParser", true);
+mongoose.connect(uri);
+
+const connection = mongoose.connection;
 
 // Require controllers
 const serveHome = require("./controllers/serveHome");

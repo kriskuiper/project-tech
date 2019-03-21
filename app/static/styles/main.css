@@ -171,12 +171,12 @@ body#homepage > main {
     padding-top: 0;
 }
 
-    body#homepage > main > section:first-of-type {
+    body#homepage > main > section.homepage-banner {
         background-image: url("/static/media/images/cyclists.min.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        width: 100vw;
+        max-width: 100vw;
         height: 70vh;
         padding-top: 25vh;
         color: var(--bg-color);
@@ -200,6 +200,7 @@ body > section:first-of-type {
 }
 
 body > section,
+body > main > section,
 body#homepage > main section:nth-of-type(2) {
     max-width: 70em;
     margin: 0em auto;
@@ -248,7 +249,7 @@ body > footer {
         padding: 1em;
         margin: 1em 0;
         color: #26343b;
-        background: #fffce9;
+        background: #fff;
     }
 
         .feed__post > footer {
@@ -262,6 +263,10 @@ body > footer {
             color: #26343b;
             opacity: 0.8;
         }
+
+            .post__author > span {
+                text-transform: capitalize;
+            }
 
         .post__meta {
             margin-right: 1em;
