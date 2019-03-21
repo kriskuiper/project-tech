@@ -1,6 +1,15 @@
 // Require dependencies from node_modules needed for the server
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+require("dotenv").config();
+
+// Process environment vars and connect to database
+const dbname = process.env.DB_NAME;
+const dbhost = process.env.DB_HOST;
+const urlToConnect = `mongodb://${dbhost}/${dbname}`;
+
+mongoose.connect(urlToConnect);
 
 // Require controllers
 const serveHome = require("./controllers/serveHome");
@@ -12,7 +21,6 @@ const renderPostDetail = require("./controllers/renderPostDetail");
 
 const app = express();
 const port = 8000;
-
 
 app
     .use("/static", express.static("app/static"))
@@ -30,7 +38,6 @@ app
 
     .use(serveNotFound)
     .listen(port, listening);
-
 
 function listening() {
     console.log(`The app is shown at port: ${port}`);

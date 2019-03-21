@@ -11,12 +11,13 @@ request("https://jsonplaceholder.typicode.com/users")
 
 async function request(url) {
     const response = await fetch(url);
-    const data = await response.json();
-    return data;
+    const body = await response.json();
+    return body;
 }
 
 function setUsers(response) {
     users = response;
+    return users;
 }
 
 function logError(error) {

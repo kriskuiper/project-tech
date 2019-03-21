@@ -1,0 +1,1 @@
+// Some schema for the post
