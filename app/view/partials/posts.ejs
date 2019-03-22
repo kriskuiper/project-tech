@@ -1,21 +1,21 @@
-<% for (let index = 0; index < postsdata.length; index++) { %>
-    <a href="/my-feed/<%= postsdata[index].url %>">
+<% for (let index = 0; index < posts.length; index++) { %>
+    <a href="/my-feed/<%= posts[index].url %>">
         <article class="feed__post">
             <header>
                 <p class="post__author">
-                    <% if (!postsdata[index].author) { %>
+                    <% if (!posts[index].author) { %>
                         <span><%= users[index].name.first %></span>
                         <span><%= users[index].name.last %></span>
                     <% } else { %>
-                        <%= postsdata[index].author %>
+                        <%= posts[index].author %>
                     <% } %>
                 </p>
             </header>
-            <h3 class="post__title"><%= postsdata[index].title %></h3>
+            <h3 class="post__title"><%= posts[index].title %></h3>
             <footer>
-                <p class="post__meta"><%= postsdata[index].location %></p> 
-                <p class="post__meta">Dist: <%= postsdata[index].kms %> km's %></p>
-                <p class="post__meta">Bike: <%= postsdata[index].bike %></p>
+                <p class="post__meta"><%= posts[index].location %></p> 
+                <p class="post__meta">Dist: <%= posts[index].kms %> km's %></p>
+                <p class="post__meta">Bike: <%= posts[index].bike %></p>
             </footer>
         </article>
     </a>
