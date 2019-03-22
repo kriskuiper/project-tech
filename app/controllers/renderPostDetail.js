@@ -1,9 +1,10 @@
 const find = require("array-find");
-const postsdata = require("../models/fakedata");
+const FeedPost = require("../models/FeedPost");
 
-function renderPostDetail(req, res, next) {
+async function renderPostDetail(req, res, next) {
     let url = req.params.url;
-    let post = find(postsdata, getClickedPost);
+    let posts = await FeedPost.find();
+    let post = find(posts, getClickedPost);
 
     if (!post) {
         next();
@@ -11,7 +12,7 @@ function renderPostDetail(req, res, next) {
     }
 
     function getClickedPost(post) {
-        return post.url === url;
+        return post.url == url;
     }
 
     res.render("detail-page.ejs", {post: post});

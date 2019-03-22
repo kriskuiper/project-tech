@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const feedPostSchema = new Schema({
     _id: ObjectId,
+    url: String,
     title: String,
     author: String,
     contents: String,

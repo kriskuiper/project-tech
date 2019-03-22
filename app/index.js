@@ -6,8 +6,11 @@ require("dotenv").config();
 
 // Process environment vars and connect to database
 const dbname = process.env.DB_NAME;
+const dbcluster = process.env.DB_CLUSTER;
 const dbhost = process.env.DB_HOST;
-const uri = `mongodb://${dbhost}/${dbname}`;
+const dbuser = process.env.DB_USER; 
+const dbpassword = process.env.DB_PASSWORD;
+const uri = `mongodb+srv://${dbuser}:${dbpassword}@${dbcluster}-${dbhost}/${dbname}`;
 
 mongoose.set("useNewUrlParser", true);
 mongoose.connect(uri);

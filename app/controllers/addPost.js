@@ -19,6 +19,7 @@ function addPost(req, res) {
     });
 
     FeedPost.create(newFeedPost);
+    
     // When the form is posted, redirect to the users' feed
     res.redirect("/my-feed");
 }
