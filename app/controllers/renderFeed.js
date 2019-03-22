@@ -1,10 +1,10 @@
 const FeedPost = require("../models/FeedPost");
-const requestUsers = require("../models/apidata");
+const getUsers = require("../models/apidata");
 
 async function renderFeed(req, res, next) {
     try {
         const posts = await FeedPost.find();
-        const users = await requestUsers();
+        const users = await getUsers();
         const reversed = await posts.reverse();
         
         res.render("feed", {

@@ -1,23 +1,21 @@
 const fetch = require("node-fetch");
 
-function requestUsers() {
-    return new Promise(resolveUsers);
+function getUsers() {
+    return request("https://randomuser.me/api/?results=10");
 }
 
-function resolveUsers(resolve) {
-    getUsers("https://randomuser.me/api/?results=10")
-            .then(response => resolve(response.results))
-            .catch(logError);
-}
-
-async function getUsers(url) {
-    const response = await fetch(url);
-    const body = await response.json();
-    return body;
+async function request(url) {
+    try {
+        const response = await fetch(url);
+        const body = await response.json();
+        return body.results;
+    } catch(error) {
+        logError(error);
+    }
 }
 
 function logError(error) {
     console.error(error);
 }
 
-module.exports = requestUsers;
+module.exports = getUsers;
