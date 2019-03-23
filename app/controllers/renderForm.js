@@ -1,5 +1,5 @@
 function renderForm(req, res) {
-    res.render("add-post.ejs");
+    res.status(200).render("add-post.ejs");
 }
 
 module.exports = renderForm;

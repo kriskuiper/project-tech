@@ -3,11 +3,11 @@
         <article class="feed__post">
             <header>
                 <p class="post__author">
-                    <% if (users[index]) { %>
+                    <% if (posts[index].author) { %>
+                        <%= posts[index].author %>
+                    <% } else { %>
                         <span><%= users[index].name.first %></span>
                         <span><%= users[index].name.last %></span>
-                    <% } else { %>
-                        <%= posts[index].author %>
                     <% } %>
                 </p>
             </header>

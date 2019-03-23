@@ -1,5 +1,6 @@
 // Require dependencies from node_modules needed for the server
 const express = require("express");
+const session = require("express-session");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -15,6 +16,15 @@ const uri = `mongodb+srv://${dbuser}:${dbpassword}@${dbcluster}-${dbhost}/${dbna
 mongoose.set("useNewUrlParser", true);
 mongoose.connect(uri);
 
+// Process secret and define sess for using express-session
+const secret = process.env.COOKIE_SECRET;
+const sess = {
+    secret: secret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {}
+};
+
 // Require controllers
 const serveHome = require("./controllers/serveHome");
 const serveNotFound = require("./controllers/serveNotFound");
@@ -29,6 +39,7 @@ const port = 8000;
 app
     .use("/static", express.static("app/static"))
     .use(bodyParser.urlencoded({extended: true}))
+    .use(session(sess))
 
     .set("view engine", "ejs")
     .set("views", "app/view")
@@ -39,8 +50,9 @@ app
     .post("/my-feed", addPost)
     .get("/add-post", renderForm)
     .get("/my-feed/:url", renderPostDetail)
-
+    
     .use(serveNotFound)
+
     .listen(port, listening);
 
 function listening() {

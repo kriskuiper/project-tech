@@ -15,7 +15,7 @@ async function renderPostDetail(req, res, next) {
         return post.url == url;
     }
 
-    res.render("detail-page.ejs", {post: post});
+    res.status(200).render("detail-page", {post: post});
 }
 
 module.exports = renderPostDetail;

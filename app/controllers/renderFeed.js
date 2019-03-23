@@ -7,7 +7,7 @@ async function renderFeed(req, res, next) {
         const users = await getUsers();
         const reversed = posts.reverse();
         
-        res.render("feed", {
+        res.status(200).render("feed", {
             posts: await reversed,
             users: await users
         });

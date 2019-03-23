@@ -11,8 +11,7 @@ const feedPostSchema = new Schema({
     kms: Number,
     bike: String,
     location: String,
-    pictures: Array
+    reactions: Array
 });
-
 
 module.exports = mongoose.model("FeedPost", feedPostSchema);
