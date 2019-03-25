@@ -17,16 +17,17 @@ mongoose.set("useNewUrlParser", true);
 mongoose.connect(uri);
 
 // Process secret and define sess for using express-session
-const secret = process.env.COOKIE_SECRET;
+const secret = process.env.SESSION_SECRET;
 const sess = {
     secret: secret,
     resave: false,
     saveUninitialized: true,
-    cookie: {}
 };
 
 // Require controllers
 const serveHome = require("./controllers/serveHome");
+const renderSignUp = require("./controllers/renderSignUp");
+const renderLogin = require("./controllers/renderLogin");
 const serveNotFound = require("./controllers/serveNotFound");
 const renderFeed = require("./controllers/renderFeed");
 const renderForm = require("./controllers/renderForm");
@@ -40,19 +41,17 @@ app
     .use("/static", express.static("app/static"))
     .use(bodyParser.urlencoded({extended: true}))
     .use(session(sess))
-
     .set("view engine", "ejs")
     .set("views", "app/view")
-
+    
     .get("/", serveHome)
+    .get("/create-account", renderSignUp)
+    .get("/log-in", renderLogin)
     .get("/my-feed", renderFeed)
-
     .post("/my-feed", addPost)
     .get("/add-post", renderForm)
     .get("/my-feed/:url", renderPostDetail)
-    
     .use(serveNotFound)
-
     .listen(port, listening);
 
 function listening() {

@@ -8,9 +8,8 @@ const userSchema = new Schema({
     firstname: String,
     lastname: String,
     bike: String,
-    feed: Object,
     posts: Array,
     reactions: Array
 });
 
-module.exports(mongoose.model("User", userSchema));
+module.exports = mongoose.model("User", userSchema);
