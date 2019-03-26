@@ -47,12 +47,13 @@ app
     
     .get("/", serveHome)
     .get("/create-account", renderCreateAccount)
-    .post("/", createAccount)
     .get("/log-in", renderLogin)
     .get("/my-feed", renderFeed)
-    .post("/my-feed", addPost)
     .get("/add-post", renderForm) 
     .get("/my-feed/:url", renderPostDetail)
+
+    .post("/", createAccount)
+    .post("/my-feed", addPost)
 
     .use(serveNotFound)
     .listen(port, listening);
