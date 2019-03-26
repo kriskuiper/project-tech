@@ -29,11 +29,13 @@ const serveHome = require("./controllers/serveHome");
 const renderCreateAccount = require("./controllers/renderCreateAccount");
 const createAccount = require("./controllers/createAccount");
 const renderLogin = require("./controllers/renderLogin");
-const serveNotFound = require("./controllers/serveNotFound");
+const login = require("./controllers/login");
+const logout = require("./controllers/logout");
 const renderFeed = require("./controllers/renderFeed");
 const renderForm = require("./controllers/renderForm");
 const addPost = require("./controllers/addPost");
 const renderPostDetail = require("./controllers/renderPostDetail");
+const serveNotFound = require("./controllers/serveNotFound");
 
 const app = express();
 const port = 8000;
@@ -47,12 +49,15 @@ app
     
     .get("/", serveHome)
     .get("/create-account", renderCreateAccount)
-    .post("/", createAccount)
     .get("/log-in", renderLogin)
+    .get("/log-out", logout)
     .get("/my-feed", renderFeed)
-    .post("/my-feed", addPost)
     .get("/add-post", renderForm)
     .get("/my-feed/:url", renderPostDetail)
+
+    .post("/my-feed", createAccount)
+    .post("/my-feed", addPost)
+
     .use(serveNotFound)
     .listen(port, listening);
 

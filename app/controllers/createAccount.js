@@ -13,7 +13,7 @@ function createAccount(req, res, next) {
     });
 
     onCreate();
-    
+
     User.create(newUser);
 
     function onCreate(error) {
@@ -24,7 +24,7 @@ function createAccount(req, res, next) {
                 firstName: newUser.firstName, 
                 lastName: newUser.lastName, 
                 bike: newUser.bike
-        };
+            };
             res.redirect("/my-feed");
         }
     }
