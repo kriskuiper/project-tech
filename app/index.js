@@ -28,6 +28,7 @@ const sess = {
 const serveHome = require("./controllers/serveHome");
 const renderCreateAccount = require("./controllers/renderCreateAccount");
 const createAccount = require("./controllers/createAccount");
+const logout = require("./controllers/logout");
 const renderLogin = require("./controllers/renderLogin");
 const renderFeed = require("./controllers/renderFeed");
 const renderForm = require("./controllers/renderForm");
@@ -48,6 +49,7 @@ app
     .get("/", serveHome)
     .get("/create-account", renderCreateAccount)
     .get("/log-in", renderLogin)
+    .get("/log-out", logout)
     .get("/my-feed", renderFeed)
     .get("/add-post", renderForm) 
     .get("/my-feed/:url", renderPostDetail)
