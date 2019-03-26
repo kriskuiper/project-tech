@@ -19,14 +19,15 @@ mongoose.connect(uri);
 // Process secret and define sess for using express-session
 const secret = process.env.SESSION_SECRET;
 const sess = {
-    secret: secret,
     resave: false,
     saveUninitialized: true,
+    secret: secret,
 };
 
 // Require controllers
 const serveHome = require("./controllers/serveHome");
-const renderSignUp = require("./controllers/renderSignUp");
+const renderCreateAccount = require("./controllers/renderCreateAccount");
+const createAccount = require("./controllers/createAccount");
 const renderLogin = require("./controllers/renderLogin");
 const serveNotFound = require("./controllers/serveNotFound");
 const renderFeed = require("./controllers/renderFeed");
@@ -45,7 +46,8 @@ app
     .set("views", "app/view")
     
     .get("/", serveHome)
-    .get("/create-account", renderSignUp)
+    .get("/create-account", renderCreateAccount)
+    .post("/", createAccount)
     .get("/log-in", renderLogin)
     .get("/my-feed", renderFeed)
     .post("/my-feed", addPost)
@@ -55,5 +57,5 @@ app
     .listen(port, listening);
 
 function listening() {
-    console.log(`The app is shown at port: ${port}`);
+    console.log(`The app is shown at port: ${port}`); // eslint-disable-line
 }

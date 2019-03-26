@@ -5,15 +5,16 @@ const FeedPost = require("../models/FeedPost");
 
 function addPost(req, res) {
     const url = slug(req.body.title).toLowerCase();
+    const { firstName, lastName, bike } = req.session.user;
 
     const newFeedPost = new FeedPost({
         _id: new mongoose.Types.ObjectId(),
         url: url,
         title: req.body.title,
-        author: req.body.author,
+        author: `${firstName} ${lastName}`,
         contents: req.body.contents,
         kms: req.body.kms,
-        bike: req.body.bike,
+        bike: bike,
         location: req.body.location,
         pictures: []
     });

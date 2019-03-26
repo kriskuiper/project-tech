@@ -1,8 +1,4 @@
-const mongoose = require("mongoose");
-const session = require("express-session");
-const User = require("../models/User");
-
-function renderLogin(req, res) {
+function renderLogin(req, res, next) {
     res.status(200).render("login");
 }
 
