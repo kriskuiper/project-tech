@@ -12,11 +12,11 @@ function createAccount(req, res, next) {
         reactions: []
     });
 
-    onCreate();
+    setSession();
 
     User.create(newUser);
 
-    function onCreate(error) {
+    function setSession(error) {
         if (error) {
             next(error);
         } else {
