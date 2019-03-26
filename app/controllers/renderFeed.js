@@ -19,8 +19,4 @@ async function renderFeed(req, res, next) {
     }
 }
 
-function logError(err) {
-    console.log(err);
-}
-
 module.exports = renderFeed;
