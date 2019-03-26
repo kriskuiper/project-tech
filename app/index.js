@@ -29,8 +29,6 @@ const serveHome = require("./controllers/serveHome");
 const renderCreateAccount = require("./controllers/renderCreateAccount");
 const createAccount = require("./controllers/createAccount");
 const renderLogin = require("./controllers/renderLogin");
-const login = require("./controllers/login");
-const logout = require("./controllers/logout");
 const renderFeed = require("./controllers/renderFeed");
 const renderForm = require("./controllers/renderForm");
 const addPost = require("./controllers/addPost");
@@ -49,11 +47,10 @@ app
     
     .get("/", serveHome)
     .get("/create-account", renderCreateAccount)
-    .post("/create-account", createAccount)
+    .post("/", createAccount)
     .get("/log-in", renderLogin)
-    .get("/log-out", logout)
-    .post("/my-feed", addPost)
     .get("/my-feed", renderFeed)
+    .post("/my-feed", addPost)
     .get("/add-post", renderForm) 
     .get("/my-feed/:url", renderPostDetail)
 
