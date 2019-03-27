@@ -28,6 +28,7 @@ const sess = {
 const serveHome = require("./controllers/serveHome");
 const renderCreateAccount = require("./controllers/renderCreateAccount");
 const createAccount = require("./controllers/createAccount");
+const login = require("./controllers/login");
 const logout = require("./controllers/logout");
 const renderLogin = require("./controllers/renderLogin");
 const renderFeed = require("./controllers/renderFeed");
@@ -56,6 +57,7 @@ app
 
     .post("/", createAccount)
     .post("/my-feed", addPost)
+    .post("/log-in", login)
 
     .use(serveNotFound)
     .listen(process.env.PORT || port, listening);
