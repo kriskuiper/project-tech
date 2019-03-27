@@ -5,6 +5,7 @@ function createAccount(req, res, next) {
     const newUser = new User({
         _id: new mongoose.Types.ObjectId(),
         username: req.body.username.toLowerCase(),
+        password: req.body.password,
         firstName: req.body.firstname,
         lastName: req.body.lastname,
         bike: req.body.bike,
