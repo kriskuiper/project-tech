@@ -1,5 +1,6 @@
 const FeedPost = require("../models/FeedPost");
 const getUsers = require("../models/apidata");
+const serveNotLoggedIn = require("./serveNotLoggedIn");
 
 async function renderFeed(req, res, next) {
     try {
@@ -14,7 +15,7 @@ async function renderFeed(req, res, next) {
                 user: req.session.user
             });
         } else {
-            res.status(401).send("You have to be logged in to view this page.");
+            serveNotLoggedIn(req, res);
         }
  // eslint-disable-line
     } catch(error) {
