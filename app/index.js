@@ -58,7 +58,7 @@ app
     .post("/my-feed", addPost)
 
     .use(serveNotFound)
-    .listen(port, listening);
+    .listen(process.env.PORT || port, listening);
 
 function listening() {
     console.log(`The app is shown at port: ${port}`); // eslint-disable-line
