@@ -3,16 +3,19 @@ const getUsers = require("../models/apidata");
 
 async function renderFeed(req, res, next) {
     try {
-        console.log(req.session.user);
         const posts = await FeedPost.find();
         const users = await getUsers();
         const reversed = posts.reverse();
         
-        res.status(200).render("feed", {
-            posts: await reversed,
-            users: await users,
-            user: req.session.user
-        });
+        if (req.session.user) {
+            res.status(200).render("feed", {
+                posts: await reversed,
+                users: await users,
+                user: req.session.user
+            });
+        } else {
+            res.status(401).send("You have to be logged in to view this page.");
+        }
  // eslint-disable-line
     } catch(error) {
         next(error);
