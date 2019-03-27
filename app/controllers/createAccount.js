@@ -4,7 +4,7 @@ const User = require("../models/User");
 function createAccount(req, res, next) {
     const newUser = new User({
         _id: new mongoose.Types.ObjectId(),
-        username: req.body.username,
+        username: req.body.username.toLowerCase(),
         firstName: req.body.firstname,
         lastName: req.body.lastname,
         bike: req.body.bike,
