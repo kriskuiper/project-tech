@@ -93,6 +93,12 @@ p.subtitle {
     font-size: var(--font-size-h2);
 }
 
+p.error {
+    background: #eb4d4b;
+    padding: 0.5em;
+    color: #fff;
+}
+
 /* Buttons */
 a.btn, 
 form button {
