@@ -11,7 +11,12 @@ If you want to try the app out, you can take a look at the [deployed version](ht
 ## Research
 You can look at the [Wiki](https://github.com/kriskuiper/project-tech/wiki) to see all the research I did for this project.
 
+
 ## Installation
+
+### Prequisites
+* MongoDB installed
+* MongoDB database is up and running
 
 ### 1. Clone the repository
 The repository can be cloned by running `git clone` in the command line.
