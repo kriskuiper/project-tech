@@ -1,7 +1,7 @@
 # CycLove dating app
 ## Description
 
-![Screenshot of the homepage]()
+![Screenshot of the homepage](https://github.com/kriskuiper/project-tech/blob/master/assets/screenshot-cyclove.png)
 
 CycLove is a web app where cyclists can date each other and keep up to date with activities of users that are near them. You can look at the [Wiki](https://github.com/kriskuiper/project-tech/wiki) to see all the research I did for this project.
 
