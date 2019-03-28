@@ -5,25 +5,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-// Process environment vars and connect to database
-const dbname = process.env.DB_NAME;
-const dbcluster = process.env.DB_CLUSTER;
-const dbhost = process.env.DB_HOST;
-const dbuser = process.env.DB_USER; 
-const dbpassword = process.env.DB_PASSWORD;
-const uri = `mongodb+srv://${dbuser}:${dbpassword}@${dbcluster}-${dbhost}/${dbname}`;
-
-mongoose.set("useNewUrlParser", true);
-mongoose.connect(uri);
-
-// Process secret and define sess for using express-session
-const secret = process.env.SESSION_SECRET;
-const sess = {
-    resave: false,
-    saveUninitialized: true,
-    secret: secret,
-};
-
 // Require controllers
 const serveHome = require("./controllers/serveHome");
 const renderCreateAccount = require("./controllers/renderCreateAccount");
@@ -36,6 +17,19 @@ const renderForm = require("./controllers/renderForm");
 const addPost = require("./controllers/addPost");
 const renderPostDetail = require("./controllers/renderPostDetail");
 const serveNotFound = require("./controllers/serveNotFound");
+
+// Process environment vars and connect to database
+const uri = process.env.MONGODB_URI;
+mongoose.set("useNewUrlParser", true);
+mongoose.connect(uri);
+
+// Process secret and define sess for using express-session
+const secret = process.env.SESSION_SECRET;
+const sess = {
+    resave: false,
+    saveUninitialized: true,
+    secret: secret,
+};
 
 const app = express();
 const port = 8000;
