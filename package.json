@@ -33,6 +33,7 @@
     "express-session": "^1.15.6",
     "mongoose": "^5.4.19",
     "node-fetch": "^2.3.0",
+    "password-hash": "^1.2.2",
     "slug": "^1.0.0"
   }
 }

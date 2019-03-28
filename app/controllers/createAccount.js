@@ -2,13 +2,14 @@ const mongoose = require("mongoose");
 const User = require("../models/User");
 
 function createAccount(req, res, next) {
+    const { username, password, firstname, lastname, bike } = req.body;
     const newUser = new User({
         _id: new mongoose.Types.ObjectId(),
-        username: req.body.username.toLowerCase(),
-        password: req.body.password,
-        firstName: req.body.firstname,
-        lastName: req.body.lastname,
-        bike: req.body.bike,
+        username: username.toLowerCase(),
+        password: password,
+        firstName: firstname,
+        lastName: lastname,
+        bike: bike,
         posts: [],
         reactions: []
     });
