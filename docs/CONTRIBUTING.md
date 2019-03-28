@@ -1,4 +1,4 @@
-# Contributing to my `project-tech` repo
+# Contributing to my project-tech repo
 I'm glad you're interested in working on my repo! Here are some contributing and code standards to help you on your way with contributing to this project.
 
 ## Pull requests
@@ -113,5 +113,23 @@ function addOne(data) {
 // addOne arg: arr (array of numbers)
 function addOne(arr) {
     return data.map(item => item + 1);
+}
+```
+
+### Object destructuring
+When working with big objects, it's preferrable that you use object destructuring to improve the readability of your code:
+```js
+// Have to write a long line to get access to specific property
+const user = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
+}
+
+// Object destructuring
+const { firstName, lastName } = req.body;
+
+const user = {
+    firstName: firstName,
+    lastName: lastName
 }
 ```

@@ -1,9 +1,15 @@
 # CycLove dating app
 ## Description
-
 ![Screenshot of the homepage](https://github.com/kriskuiper/project-tech/blob/master/assets/screenshot-cyclove.png)
 
-CycLove is a web app where cyclists can date each other and keep up to date with activities of users that are near them. You can look at the [Wiki](https://github.com/kriskuiper/project-tech/wiki) to see all the research I did for this project.
+CycLove is a web app where cyclists can date each other and keep up to date with activities of users that are near them. The app uses a MongoDB database which is configured using [Atlas](https://www.mongodb.com/cloud/atlas). The server is built using the [express package](https://www.npmjs.com/package/express).
+
+When a user creates an account it's first name, last name and bike get stored in a session by using [express-session](https://www.npmjs.com/package/express-session). By using the session the user can get access to it's feed and always gets redirected to the feed if they go to the homepage of CycLove.
+
+If you want to try the app out, you can take a look at the [Deployed version](https://cyclove-app.herokuapp.com/).
+
+## Research
+You can look at the [Wiki](https://github.com/kriskuiper/project-tech/wiki) to see all the research I did for this project.
 
 ## Installation
 
