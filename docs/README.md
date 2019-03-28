@@ -1,6 +1,7 @@
 # CycLove dating app
 ## Description
-CycLove is a web app where cyclists can date each other and keep up to date with activities of the people they follow. You can look at the [Wiki](https://github.com/kriskuiper/project-tech/wiki) to see all the research I did for this project. 
+
+CycLove is a web app where cyclists can date each other and keep up to date with activities of users that are near them. You can look at the [Wiki](https://github.com/kriskuiper/project-tech/wiki) to see all the research I did for this project.
 
 ## Installation
 
@@ -16,12 +17,24 @@ Install all necessary dependencies by running `npm install`.
 npm install
 ```
 
-### 3. Running and viewing the application
+## Usage
+
+### 1. Configure .env
+Before you can run the app, you need to add a .env file and set these variables:
+```
+MONGODB_URI=uri_to_your_mongodb_database
+SESSION_SECRET=your_session_secret
+```
+
+### 2. Running and viewing the application
 You can run the node server by simply running `npm run start`, you can view it by going to `localhost:8000`.
 ```
 1. npm run start
-2. open browser and go to localhost:8000
+2. open browser and go to localhost:specified_port
 ```
 
 NOTE:
-Make sure you run `npm run start` before you try viewing the app, otherwise it won't show in your browser.
+Make sure you run `npm run start` before you try viewing the app, otherwise it won't show in your browser, the app will let you know on which port it's running:
+```
+The app is shown at port: 8000
+```
