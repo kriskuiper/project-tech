@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 function getUsers() {
-    return request("https://randomuser.me/api/?results=10");
+    return request("https://jsonplaceholder.typicode.com/users");
 }
 
 async function request(url) {
