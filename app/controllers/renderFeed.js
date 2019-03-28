@@ -17,7 +17,6 @@ async function renderFeed(req, res, next) {
         } else {
             serveNotLoggedIn(req, res);
         }
- // eslint-disable-line
     } catch(error) {
         next(error);
     }
