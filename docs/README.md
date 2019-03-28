@@ -17,6 +17,11 @@ You can look at the [Wiki](https://github.com/kriskuiper/project-tech/wiki) to s
 ### Prequisites
 * MongoDB installed
 * MongoDB database is up and running
+* Configure .env:
+```
+MONGODB_URI=uri_to_your_mongodb_database
+SESSION_SECRET=your_session_secret
+```
 
 ### 1. Clone the repository
 The repository can be cloned by running `git clone` in the command line.
@@ -30,17 +35,8 @@ Install all necessary dependencies by running `npm install`.
 npm install
 ```
 
-## Usage
-
-### 1. Configure .env
-Before you can run the app, you need to add a .env file and set these variables:
-```
-MONGODB_URI=uri_to_your_mongodb_database
-SESSION_SECRET=your_session_secret
-```
-
-### 2. Running and viewing the application
-You can run the node server by simply running `npm run start`, you can view it by going to `localhost:8000`.
+## Running and viewing the application
+You can run the node server by simply running `npm run start`, you can view it by going to `localhost:specified_port`.
 ```
 1. npm run start
 2. open browser and go to localhost:specified_port
