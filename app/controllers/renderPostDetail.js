@@ -12,7 +12,7 @@ async function renderPostDetail(req, res, next) {
     }
 
     function getClickedPost(post) {
-        return post.url == url;
+        return post.url === url;
     }
 
     res.status(200).render("detail-page", {post: post});
