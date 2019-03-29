@@ -6,17 +6,17 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 // Require controllers
-const serveHome = require("./controllers/serveHome");
-const renderCreateAccount = require("./controllers/renderCreateAccount");
-const createAccount = require("./controllers/createAccount");
-const login = require("./controllers/login");
-const logout = require("./controllers/logout");
-const renderLogin = require("./controllers/renderLogin");
-const renderFeed = require("./controllers/renderFeed");
-const renderForm = require("./controllers/renderForm");
-const addPost = require("./controllers/addPost");
-const renderPostDetail = require("./controllers/renderPostDetail");
-const serveNotFound = require("./controllers/serveNotFound");
+const serveHome = require("./app/controllers/serveHome");
+const renderCreateAccount = require("./app/controllers/renderCreateAccount");
+const createAccount = require("./app/controllers/createAccount");
+const login = require("./app/controllers/login");
+const logout = require("./app/controllers/logout");
+const renderLogin = require("./app/controllers/renderLogin");
+const renderFeed = require("./app/controllers/renderFeed");
+const renderForm = require("./app/controllers/renderForm");
+const addPost = require("./app/controllers/addPost");
+const renderPostDetail = require("./app/controllers/renderPostDetail");
+const serveNotFound = require("./app/controllers/serveNotFound");
 
 // Process environment vars and connect to database
 const uri = process.env.MONGODB_URI;
