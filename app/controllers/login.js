@@ -13,7 +13,11 @@ async function login(req, res, next) {
                     lastName: users[i].lastName,
                     bike: users[i].bike
                 };
-                res.redirect("/my-feed");
+                if (req.cookies.js_enabled) {
+                    res.redirect("/my-feed?limit=0");
+                } else {
+                    res.redirect("/my-feed");
+                }
             } else {
                 const error = "Username or password incorrect";
                 res.status(403).render("login", {error: error});
