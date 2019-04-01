@@ -27,7 +27,11 @@ function createAccount(req, res, next) {
                 lastName: newUser.lastName, 
                 bike: newUser.bike
             };
-            res.redirect("/my-feed");
+            if (req.cookies.js_enabled) {
+                res.redirect("/my-feed?limit=0");
+            } else {
+                res.redirect("/my-feed");
+            }
         }
     }
 }
