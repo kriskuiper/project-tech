@@ -1,6 +1,7 @@
 // Require dependencies from node_modules needed for the server
 const express = require("express");
 const session = require("express-session");
+const paginate = require("express-paginate");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -38,6 +39,7 @@ app
     .use("/static", express.static("app/static"))
     .use(bodyParser.urlencoded({extended: true}))
     .use(session(sess))
+    .use(paginate.middleware(10, 10)) // Limit = 10, maxLimit = infinite
     .set("view engine", "ejs")
     .set("views", "app/view")
     

@@ -279,6 +279,16 @@ body > footer {
             margin-right: 1em;
         }
 
+.pages {
+    display: flex;
+}
+
+    .pages > li {
+        padding: 0.5em;
+        border: 1px solid var(--text-color);
+        margin-right: 1em;
+    }
+
 /* 404 Page styling */
 
 
