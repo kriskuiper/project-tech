@@ -8,6 +8,10 @@ When a user creates an account it's first name, last name and bike get stored in
 
 If you want to try the app out, you can take a look at the [deployed version](https://cyclove-app.herokuapp.com/).
 
+## Datamodel
+
+![The datamodel of Cyclove](https://github.com/kriskuiper/project-tech/blob/master/assets/datamodel.png)
+
 ## Research
 You can look at the [Wiki](https://github.com/kriskuiper/project-tech/wiki) to see all the research I did for this project.
 
