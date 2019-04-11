@@ -6,3 +6,6 @@ node_modules
 
 # Ignore environment variable
 .env
+
+# Ignore VSCode
+.vscode
