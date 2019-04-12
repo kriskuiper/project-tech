@@ -1,6 +1,9 @@
 // DOM Elements
 const feedPosts = document.querySelectorAll(".feed__post");
 
+// New IntersectionObserver
+const postObserver = new IntersectionObserver(showPosts);
+
 // Cutting the mustard technique
 if ("querySelector" in document) {
     document.body.classList.add("js-enabled");
@@ -12,31 +15,29 @@ if ("querySelector" in document) {
 
 // Handle feed posts
 if ("IntersectionObserver" in window) {
-    const postObserver = new IntersectionObserver(showPosts);
-
     // Observe the feed posts
     feedPosts.forEach(observeFeedPost);
-
-    function observeFeedPost(feedPost) {
-      postObserver.observe(feedPost);
-    }
-
-    // Callback for the intersection observer, add the is--visible class to an entry if it is intersecting with the IU
-    function showPosts(entries) {
-      entries.forEach(showPost);
-
-      function showPost(entry) {
-        const entryClass = entry.target.classList;
-
-        if (entry.isIntersecting) {
-          entryClass.add("is--visible");
-        }
-      }
-    }
 } else {
     feedPosts.forEach(feedPost, makeVisible);
+}
 
-    function makeVisible(feedPost) {
-      feedPost.classList.add("is--visible");
-    }
+function observeFeedPost(feedPost) {
+  postObserver.observe(feedPost);
+}
+
+// Callback for the intersection observer, add the is--visible class to an entry if it is intersecting with the IU
+function showPosts(entries) {
+  entries.forEach(showPost);
+}
+
+function showPost(entry) {
+  const entryClass = entry.target.classList;
+
+  if (entry.isIntersecting) {
+    entryClass.add("is--visible");
+  }
+}
+
+function makeVisible(feedPost) {
+  feedPost.classList.add("is--visible");
 }
